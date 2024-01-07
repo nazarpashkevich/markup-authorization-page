@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Authorization</title>
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/sign-up.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+<main class="main-with-sidebar">
+    <div class="sidebar"></div>
+    <div class="main">
+        <div class="container">
+            <div class="row">
+                <div class="progress-bar">
+                    <div class="progress-bar-item"></div>
+                    <div class="progress-bar-item"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="signup-form">
+                    <div class="form-header">
+                        <h3 class="primary-text">Step <span id="step">1</span> of 2</h3>
+                        <h1 class="title-text">Sign up</h1>
+                        <span class="sub-text">Already have an account? <a href="" class="link">Log in</a></span>
+                    </div>
+                    <div class="form-body" data-step="1">
+                        <div class="form-group">
+                            <div class="form-field">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" placeholder="example@domain.com">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-field">
+                                <label for="first_name">First Name</label>
+                                <input type="text" id="first_name" placeholder="First name">
+                            </div>
+                            <div class="form-field">
+                                <label for="last_name">Last Name</label>
+                                <input type="text" id="last_name" placeholder="Last name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-field">
+                                <label for="password">Password</label>
+                                <div class="password-block">
+                                    <input type="password" id="password" placeholder="Password">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group password-info none">
+                            <div>
+                                <span class="info">Password must:</span>
+                                <ul>
+                                    <li class="rule">
+                                        <svg width="6" height="6" viewBox="0 0 6 6" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="3" cy="3" r="3" fill="currentColor"/>
+                                        </svg>
+                                        Be at least 8 characters long
+                                    </li>
+                                    <li class="rule">
+                                        <svg width="6" height="6" viewBox="0 0 6 6" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="3" cy="3" r="3" fill="currentColor"/>
+                                        </svg>
+                                        Have at least one uppercase
+                                    </li>
+                                    <li class="rule">
+                                        <svg width="6" height="6" viewBox="0 0 6 6" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="3" cy="3" r="3" fill="currentColor"/>
+                                        </svg>
+                                        Have at least one number or special character
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-field">
+                                <label for="repeat-password">Repeat password</label>
+                                <div class="password-block">
+                                    <input type="password" id="repeat-password" placeholder="Password">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-body" data-step="2">
+                        <div class="form-group">
+                            <div class="form-field">
+                                <label>Account type</label>
+                                <div class="custom-select">
+                                    <div class="selected">Personal</div>
+                                    <ul class="options">
+                                        <li>Personal</li>
+                                        <li>Business</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-field">
+                                <label for="organization-name">Organization name</label>
+                                <input type="text" id="organization-name" placeholder="Organization name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-field">
+                                <label>IoT provider</label>
+                                <div class="custom-select">
+                                    <div class="selected">AZURE</div>
+                                    <ul class="options">
+                                        <li>AZURE</li>
+                                        <li>SAP</li>
+                                        <li>AWS</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button class="base-btn next-btn" data-step="1" type="button">Next</button>
+                        <button class="base-btn back-btn" data-step="2" type="button">Back</button>
+                        <button
+                                class="base-btn"
+                                data-step="2"
+                                type="button"
+                                onclick="document.location.href = 'sign-up-confirmation.html'"
+                        >Sign up</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<script>
+    function onLoad() {
+        let step = 0;
+
+        document.getElementById('password').addEventListener('input', validatePassword)
+
+        function validatePassword(e) {
+            const infoBlock = document.getElementsByClassName('password-info')[0]
+            const password = e.target.value
+            if (!password.length > 0) {
+                infoBlock.classList.add('none')
+                return;
+            }
+            const rules = infoBlock.querySelectorAll('.rule')
+
+            password.length > 7 ? rules[0]?.classList.add('filled') : rules[0]?.classList.remove('filled')
+
+            const uppercaseRegex = /[A-Z]/;
+            uppercaseRegex.test(password) ? rules[1]?.classList.add('filled') : rules[1]?.classList.remove('filled')
+
+            const numberOrSpecialCharRegex = /[0-9!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]/;
+            numberOrSpecialCharRegex.test(password) ? rules[2]?.classList.add('filled') :
+                rules[2]?.classList.remove('filled')
+
+            infoBlock.classList.remove('none');
+        }
+
+        document.querySelectorAll('.password-block')
+            .forEach(passwordBlock => passwordBlock.addEventListener('click', showPassword));
+
+        function showPassword(e) {
+            const block = e.target
+            if (block.tagName.toLowerCase() !== 'input') {
+                const passwordInput = block.querySelector('input')
+                if (block.classList.contains('shown')) {
+                    passwordInput.type = 'password'
+                    block.classList.remove('shown')
+                    return;
+                }
+
+                passwordInput.type = 'text'
+                block.classList.add('shown')
+            }
+        }
+
+        document.querySelector('.next-btn').addEventListener('click', moveToNextStep)
+
+        function moveToNextStep() {
+            step++
+            document.getElementById('step').innerText = step.toString()
+            document.querySelectorAll('.progress-bar-item').forEach((item, index) => {
+                index + 1 <= step && item.classList.add('filled');
+            });
+            document.querySelectorAll(`[data-step]:not([data-step="${step}"])`).forEach(element => element.classList.add('none'))
+            document.querySelectorAll(`[data-step="${step}"]`).forEach(element => element.classList.remove('none'))
+        }
+
+        document.querySelector('.back-btn').addEventListener('click', moveBackStep)
+
+        function moveBackStep() {
+            step = step - 2
+            moveToNextStep()
+        }
+
+        moveToNextStep()
+
+        document.querySelectorAll('.custom-select').forEach(selectBlock => {
+            selectBlock.addEventListener('click', showSelectOptions)
+            selectBlock.querySelectorAll('.options li')
+                .forEach(optionBlock => optionBlock.addEventListener('click', selectItem))
+
+            function selectItem(e) {
+                const block = e.target
+                selectBlock.querySelector('.selected').innerHTML = block.innerText
+                showSelectOptions({target: selectBlock.querySelector('.selected')})
+            }
+
+            function showSelectOptions(e) {
+               const block = e.target.parentNode
+
+                if (block.classList.contains('active')) {
+                    block.classList.remove('active')
+                    return;
+                }
+
+                document.querySelectorAll('.custom-select').forEach(element => element.classList.remove('active'))
+                block.classList.add('active')
+            }
+        })
+    }
+
+    window.onload = onLoad
+</script>
+</body>
+</html>

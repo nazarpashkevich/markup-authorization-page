@@ -1,0 +1,316 @@
+* {
+    font-family: Inter;
+}
+
+.none {
+    display: none !important;
+}
+
+.main-with-sidebar {
+    display: flex;
+    flex-direction: row;
+}
+
+.sidebar {
+    flex-grow: 1;
+    max-width: 386px;
+    background-image: url("./../images/left-sidebar.png");
+    background-size: 100% 100%;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        display: none;
+    }
+}
+
+.main {
+    flex-grow: 1;
+    height: 100vh;
+    padding: 40px 0;
+    overflow-y: auto;
+}
+
+.container {
+    max-width: 368px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+.row {
+    display: flex;
+}
+
+.progress-bar {
+    flex-grow: 1;
+    margin-bottom: 76px;
+    display: flex;
+    height: 4px;
+    gap: 16px;
+}
+
+@media (max-width: 768px) {
+    .progress-bar {
+        margin-bottom: 8px;
+    }
+}
+
+.progress-bar-item {
+    background-color: #EBEFF2;
+    border-radius: 15px;
+    flex-grow: 1;
+}
+
+.progress-bar-item.filled {
+    background-color: #6946F4;
+}
+
+.signup-form {
+    padding: 16px 0;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.form-header {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 40px;
+}
+
+.form-header .primary-text {
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 400;
+    color: #A0ADBA;
+}
+
+.form-header .title-text {
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.form-header .sub-text {
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 400;
+}
+
+
+.link {
+    color: #6946F4;
+    text-decoration: none;
+}
+
+.form-body {
+    flex-grow: 1;
+    display: inline-block;
+    margin-bottom: 24px;
+}
+
+.form-group {
+    display: flex;
+    margin-bottom: 20px;
+    gap: 16px;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.signup-form label {
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 400;
+    margin-bottom: 4px;
+}
+
+.signup-form input {
+    border: 1px #D8DDE3 solid;
+    border-radius: 8px;
+    padding: 12px 8px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.signup-form input:focus {
+    border-color: #6946F4;
+    outline: none;
+}
+
+@media (max-width: 768px) {
+    .signup-form input {
+        padding: 8px;
+    }
+}
+
+.form-actions {
+    display: flex;
+    gap: 16px
+}
+
+.base-btn {
+    background-color: #6946F4;
+    padding: 10px 16px;
+    border-radius: 6px;
+    border: transparent 1px solid;
+    color: white;
+    flex-grow: 1;
+    cursor: pointer;
+}
+
+.next-btn {
+
+}
+
+.back-btn {
+    background-color: #EBEFF2;
+    color: black;
+}
+
+.password-block {
+    position: relative;
+}
+
+.password-block input {
+    padding-right: 25px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.password-block::after {
+    content: url('./../images/eye-crossed.svg');
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.password-block.shown::after {
+    content: url('./../images/eye.svg');
+}
+
+.password-info .info {
+    display: inline-block;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 400;
+    margin-bottom: 8px;
+}
+
+.password-info li {
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 400;
+    margin-bottom: 6px;
+    color: #8896A4
+}
+
+.password-info li svg {
+    margin-right: 6px;
+    transform: translate(0px,-1px);
+}
+
+.password-info li.filled svg {
+    color: green;
+}
+
+.password-info li.filled {
+    color: black;
+}
+
+.custom-select {
+    position: relative;
+    color: #8896A4
+
+}
+
+.custom-select {
+    border: 1px #D8DDE3 solid;
+    border-radius: 8px;
+    padding: 12px 8px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 400;
+    color: black;
+}
+
+
+.custom-select::after {
+    content: url("./../images/arrow-down.svg");
+    position: absolute;
+    top: 45%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    cursor: pointer;
+}
+
+.custom-select.active {
+    border-color: #6946F4;
+}
+
+.custom-select.active::after {
+    content: url("./../images/arrow-up.svg");
+}
+
+.custom-select .options {
+    position: absolute;
+    border-color: white;
+    border-radius: 8px;
+    width: 100%;
+    top: 42px;
+    left: 0px;
+    z-index: 9;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: none;
+}
+
+.custom-select.active .options {
+    display: block;
+}
+
+.custom-select .options li {
+    padding: 12px;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 400;
+}
+
+.custom-select .options li:hover {
+    background-color: #eff4ff;
+}
+
+.confirmation-block {
+    margin: 136px 0 40px;
+    flex-direction: column;
+}
+
+.confirmation-title {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.confirmation-description {
+    font-size: 13px;
+    line-height: 20px;
+    font-weight: 400;
+}
+
+.confirmation-reminder {
+    font-size: 13px;
+    line-height: 20px;
+    font-weight: 400;
+}
